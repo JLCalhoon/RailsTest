@@ -1,0 +1,31 @@
+<h1 class='text-center'>Celebrate Victories</h1>
+
+<div class='row justify-content-md-center'>
+<% @victories.each do |v| %>
+	<div class="card bg-primary text-white" style="width: 30rem;margin:20px;">
+	  <div class="card-body">
+	    <h5 class="card-title text-center"><%= v.title %></h5>
+	    <p class="card-text text-center"><%= v.content %></p>
+	    <!--<a href="#" class="card-link">Card link</a>-->
+	    <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+		  <div class="btn-group mr-2" role="group" aria-label="First group">
+		    <%= button_to (v.heart.to_s+" ❤️"), react_heart_path(v), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (v.thumb.to_s+" 👍"), react_thumb_path(v), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (v.cool.to_s+" 😎"), react_cool_path(v), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (v.crazy.to_s+" 🤪"), react_crazy_path(v), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		  </div>
+		</div>
+	  </div>
+	</div>
+<% end %>
+</div>
+
+<script>
+function fakeIt(button) {
+	val = button.innerHTML;
+	var trueVal = parseInt(val.split(' ')[0])
+	trueVal += 1
+	button.innerHTML = trueVal + ' ' + val.split(' ')[1]
+}
+</script>
+

@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<div>
+	<div class='jumbotron'>
+  		<h3 class='text-center text-success'><%= @victory.title %></h3>
+  		<p class='text-center'><%= @victory.content %></p>
+  		<br/>
+  		<hr/>
+  		<br/>
+  		<div class='row justify-content-md-center'>
+  			<div class="btn-group mr-2" role="group" aria-label="First group">
+		    <%= button_to (@victory.heart.to_s+" ❤️"), react_heart_path(@victory), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (@victory.thumb.to_s+" 👍"), react_thumb_path(@victory), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (@victory.cool.to_s+" 😎"), react_cool_path(@victory), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		    <%= button_to (@victory.crazy.to_s+" 🤪"), react_crazy_path(@victory), method: "put", class: "btn btn-dark pl-2", onclick: "fakeIt(this)"%>
+		  </div>
+
+		</div>
+  	</div>
+  	<div class='row justify-content-md-center'>
+	  	<div class="btn-toolbar" role="toolbar" aria-label="Toobar">
+		  <div class="btn-group me-2" role="group" aria-label="Tools">
+
+		    <%= link_to "Edit this victory", edit_victory_path(@victory), class:"btn btn-primary ml-1" %>
+	 		<%= link_to "Back to victories", victories_path, class:"btn btn-primary ml-1" %>
+	 		<%= button_to "Delete this victory", @victory, method: :delete, class:"btn btn-danger ml-1" %>
+		  </div>
+		</div>
+	</div>
+</div>
